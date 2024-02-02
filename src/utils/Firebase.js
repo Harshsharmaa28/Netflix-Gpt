@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB7Hx4A71dg43fAdfX3VwE4RLvrPgwJbys",
-  authDomain: "netflix-gpt-97529.firebaseapp.com",
-  projectId: "netflix-gpt-97529",
-  storageBucket: "netflix-gpt-97529.appspot.com",
-  messagingSenderId: "230825340884",
-  appId: "1:230825340884:web:d9795ffdb91f727c1cb041"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN ,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET_ID,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID 
 };
 
 

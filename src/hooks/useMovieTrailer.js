@@ -3,9 +3,9 @@ import { API_OPTIONS } from "../utils/constants";
 import {addTrailerVideo} from "../utils/moviesSlice"
 import { useEffect } from "react";
 
+
 export const useMovieTrailer = ({movieId}) => {
     const dispatch = useDispatch();
-    console.log(movieId)
     const trailorVideo = useSelector((store) => store.movies?.trailorVideo);
 
     const getMovieVideo = async () => {
