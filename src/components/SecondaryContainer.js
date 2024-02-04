@@ -8,10 +8,10 @@ const SecondaryContainer = () => {
   return (
     <div className=' bg-gray-800'>
       <div className=' -mt-72 flex flex-col gap-2'>
-      <MovieList title={"NowPlaying Movies"} movies={movies?.nowPlayingMovies}/>
-      <MovieList title={"Popular Movies"} movies={movies?.PopularMovies}/>
-      <MovieList title={"Popular Movies"} movies={movies?.PopularMovies}/>
-      <MovieList title={"Popular Movies"} movies={movies?.PopularMovies}/>
+      <MovieList title={"Now Playing Movies"} movies={movies?.nowPlayingMovies}/>
+      <MovieList title={"Trending This Month"} movies={movies?.TrendingMovies}/>
+      <MovieList title={"Upcoming Movies"} movies={movies?.UpcomingMovies}/>
+      <MovieList title={"Top Rated Movies"} movies={movies?.TopratedMovies}/>
       <MovieList title={"Popular Movies"} movies={movies?.PopularMovies}/>
       </div>
     </div>

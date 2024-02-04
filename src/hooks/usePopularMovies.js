@@ -9,7 +9,7 @@ export const usePopularMovies = () => {
     const PopularMovies = useSelector((store) => store.movies.PopularMovies);
 
     const getPopularMovies = async () => {
-        const data = await fetch("https://api.themoviedb.org/3/movie/popular?",
+        const data = await fetch("https://api.themoviedb.org/3/movie/popular?language=hi-IN",
             API_OPTIONS);
 
         const json = await data.json();

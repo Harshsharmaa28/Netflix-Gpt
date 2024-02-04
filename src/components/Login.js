@@ -74,9 +74,6 @@ const Login = () => {
     }
   }
 
-  // const isEmpty = () =>{
-  //   <p className="text-red-500 font-bold text-lg py-2">Please Enter the Credentials !</p>
-  // }
   const toggleSignInForm = () => {
     seterrorMessage(false)
     setIsSignInForm(!isSignInForm);
