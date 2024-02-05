@@ -28,7 +28,7 @@ const Body = () => {
     },[])
 
     return (
-        <div>
+        <div className='w-screen'>
             <RouterProvider router={appRouter} />
         </div>
     )
