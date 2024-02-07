@@ -13,7 +13,7 @@ import GptSearch from './GptSearch';
 const Browse = () => {
 
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-
+  
   useNowPlayingMovies();
   usePopularMovies();
   useUpcomingMovies();
