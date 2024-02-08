@@ -1,20 +1,19 @@
 import React from 'react'
 import { Shimmer } from 'react-shimmer'
-const ShimmerWrapper = ({ width, height, children }) => {
-    return (
-        <div>
-            <div style={{ position: 'relative', width, height }}>
-                <Shimmer
-                    width={width}
-                    height={height}
-                    style={{ position: 'absolute', top: 0, left: 0 }}
-                />
-                <div style={{ visibility: 'hidden', width, height }}>
-                    {children}
-                </div>
-            </div>
-        </div>
-    )
+
+const ShimmerWrapper = ({ width, height}) => {
+    const shimmerStyle = {
+        width: width,
+        height: height,
+        background: 'linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%)',
+        backgroundSize: '200% 100%',
+        backgroundPosition: 'right', // Set the background position to the right
+        animation: 'shimmerAnimation 1.5s infinite linear',
+      };
+    
+      return (
+        <div style={shimmerStyle}></div>
+      );
 }
 
 export default ShimmerWrapper
