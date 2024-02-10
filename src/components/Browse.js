@@ -21,7 +21,7 @@ const Browse = () => {
   useUpcomingMovies();
   useTopratedMovies();
   useTrendingMovies();
-  const result = useSelector((store) => store.movies.TrendingMovies);
+  const result = useSelector((store) => store.movies);
   
   return (
     <div>
