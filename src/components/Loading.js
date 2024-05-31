@@ -8,9 +8,9 @@ const Loading = () => {
 
 
   return (
-    <div className=' backdrop-blur-md -mt-64 absolute z-100 h-screen w-screen flex justify-center items-center flex-col'>
+    <div className=' h-[100vh] backdrop-blur-md -mt-[35rem] text-white md:text-black md:-mt-64 absolute z-100 sm:h-screen w-screen flex justify-center items-center flex-col'>
       <HashLoader/>
-      <span className=' text-5xl py-4'>Loading Your Favourite Movies....</span>
+      <span className=' sm:text-5xl py-4'>Loading Your Favourite Movies....</span>
     </div>
   )
 }
