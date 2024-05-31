@@ -3,8 +3,9 @@ import Login from './Login'
 import Browse from './Browse'
 import { createBrowserRouter } from 'react-router-dom'
 import { RouterProvider } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import NotFound from './NotFound'
+import Loading from './Loading'
 const Body = () => {
     const dispatch = useDispatch();
     const appRouter = createBrowserRouter([
@@ -39,10 +40,13 @@ const Body = () => {
         //     //sign out logic
         // }
     },[])
-
+    const movies = useSelector((store) => store.movies);
+    const user = useSelector((store) => store.user);
     return (
         <div className='w-screen'>
             <RouterProvider router={appRouter} />
+            { (!movies.nowPlayingMovies && !movies.PopularMovies && !movies.TrendingMovies) && user && 
+                <Loading/>}
         </div>
     )
 }

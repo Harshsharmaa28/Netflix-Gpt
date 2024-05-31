@@ -9,8 +9,7 @@ import { useTopratedMovies } from '../hooks/useTopratedMovies';
 import { useTrendingMovies } from '../hooks/useTrendingMovies';
 import { useSelector } from 'react-redux';
 import GptSearch from './GptSearch';
-import { Shimmer } from 'react-shimmer';
-import ShimmerWrapper from './ShimmerWrapper';
+import Loading from './Loading';
 
 const Browse = () => {
 
@@ -26,9 +25,7 @@ const Browse = () => {
   return (
     <div>
       <Header />
-      {result ? (
-        // Render content when result is loaded
-        <>
+      <>
           {showGptSearch ? <GptSearch /> : (
             <>
               <MainContainer />
@@ -36,10 +33,6 @@ const Browse = () => {
             </>
           )}
         </>
-      ) : (
-        // Render a loading indicator while result is being fetched
-        <ShimmerWrapper width={'100vw'} height={'100vh'}></ShimmerWrapper>
-      )}
     </div>
   )
 }

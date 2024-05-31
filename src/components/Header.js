@@ -50,7 +50,7 @@ const Header = () => {
             <img className=' object-cover lg:mx-24 z-10 lg:left-[10%] lg:w-[13%]' src="./assests/logo.png" alt="" />
             <div className=' flex flex-col lg:flex-row mx-2 gap-1 lg:mx-24 lg:gap-10 '>
                 {user && <button
-                    className="lg:py-2 py-1.5 px-2 lg:px-4 mt-5 lg:my-5 bg-purple-800 text-white rounded-lg"
+                    className="lg:py-2 py-1.5 px-2 lg:px-4 mt-5 lg:my-5  border border-white text-white rounded-lg"
                 onClick={handleGptSearchClick}
                 >
                     {showGptSearch ? "Homepage" : "GPT Search"}
