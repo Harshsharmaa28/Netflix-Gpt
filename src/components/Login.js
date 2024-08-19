@@ -79,12 +79,12 @@ const Login = () => {
     setIsSignInForm(!isSignInForm);
   }
   return (
-    <div className=' '>
+    <div className=''>
       <Header></Header>
-      <div className=' absolute'>
+      <div className='absolute'>
         <img className='h-screen w-screen object-cover' src="./assests/bg.jpg" alt="" />
       </div>
-      <form onSubmit={(e) => e.preventDefault()} className=" absolute w-[90%] sm:w-[60%] md:w-[52%] lg:w-[45%] xl:w-[35%] 2xl:w-[25%] p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
+      <form onSubmit={(e) => e.preventDefault()} className="absolute w-[90%] sm:w-[60%] md:w-[52%] lg:w-[45%] xl:w-[35%] 2xl:w-[25%] p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80">
         <h1 className="font-bold text-3xl py-2">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
@@ -107,7 +107,7 @@ const Login = () => {
           placeholder="Password"
           className=" outline-none p-4 my-4 w-full bg-gray-700"
         />
-        <p className="text-red-500 font-bold text-lg ">{errorMessage}</p>
+        <p className="text-red-500 font-bold text-sm">{errorMessage}</p>
         {/* {isInputEmpty && isEmpty
 
         } */}
