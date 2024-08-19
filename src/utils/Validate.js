@@ -1,12 +1,14 @@
 export const checkValidData = (email, password) => {
-    if(email=="") return "Please Enter the Email !"
-    if(password=="") return "Please Enter the Password"
-    const isEmailValid = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email);
+    if (email === "") return "Please enter the email!";
+    if (password === "") return "Please enter the password!";
 
-    const isPasswordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    if (!isEmailValid) return "Email ID is not valid";
-    if (!isPasswordValid) return "Password is not valid";
-  
+    // password contains at least one digit, one lowercase, one uppercase, and is at least 8 characters long
+    const isPasswordValid = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(password);
+
+    if (!isEmailValid) return "The email address is not valid.";
+    if (!isPasswordValid) return "The password must be at least 8 characters long, and include one digit, one lowercase, and one uppercase letter.";
+
     return null;
-}
+};
