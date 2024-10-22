@@ -1,10 +1,21 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
-    <div className='flex justify-center items-center mt-[40%] md:mt-0'>
-      <img className='md:max-w-screen md:h-screen' src="https://cdn.dribbble.com/users/1627675/screenshots/4031125/media/ecc27cd72a015fbbcb0ae28c7febef7e.gif" alt="" />
-    </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center">
+    <h1 className="text-9xl font-bold text-red-500">404</h1>
+    <p className="text-2xl text-gray-600 mt-4">
+      Oops! The page you're looking for doesn't exist.
+    </p>
+    <button
+      className="mt-8 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300 focus:outline-none"
+      onClick={() => navigate('/browse')}
+    >
+      Go Back to Home
+    </button>
+  </div>
   )
 }
 

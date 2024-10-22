@@ -8,7 +8,7 @@ const MovieList = ({ title, movies }) => {
       <div className=''>
         <div className=' flex overflow-x-scroll gap-10 mx-4'>
           {movies?.slice().reverse().map((movie) => (
-            <MovieCard key={movie.id} poster_path={movie.poster_path} title={movie.title} />
+            movie.poster_path && <MovieCard key={movie.id} poster_path={movie.poster_path} title={movie.title} />
           ))}
         </div>
       </div>

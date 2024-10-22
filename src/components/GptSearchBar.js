@@ -6,62 +6,72 @@ import { API_OPTIONS } from '../utils/constants';
 import { addGptMovieResult } from "../utils/gptSlice";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
 
 const GptSearchBar = () => {
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_Gemini_API_KEY);
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
   const dispatch = useDispatch();
   const searchText = useRef(null);
   const [error,seterror] = useState(false);
+  const [Loading,setLoading] = useState(false);
 
   const searchMovieTMDB = async (movie) => {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/search/movie?query=" +
-      movie +
-      "&include_adult=false&language=en-US&page=1",
-      API_OPTIONS
-    );
-    const json = await data.json();
-
-    return json.results;
+    try {
+      const data = await fetch(
+        "https://api.themoviedb.org/3/search/movie?query=" +
+        movie +
+        "&include_adult=false&language=en-US&page=1",
+        API_OPTIONS
+      );
+      const json = await data.json();
+  
+      return json.results;
+    } catch (error) {
+      return toast.error("some error occured")
+    }
   }
   const handleGptSearchClick = async () => {
+    setLoading(true)
     console.log(searchText.current.value)
     if(!searchText.current.value) return null;
 
-    const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query : " +
+    const gptQuery = "Act as a Movie Recommendation system and suggest some movies for the query try to give priority to the hindi movies: " +
       searchText.current.value +
       ". only give me names of 5 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
       let gptResults;
       try {
-        const gptResults = await openai.chat.completions.create({
-          messages: [{ role: "user", content: gptQuery }],
-          model: "gpt-3.5-turbo",
-        });
+        gptResults = await model.generateContent(gptQuery);
       
         // Handle successful response
-        console.log("GPT results:", gptResults);
+        console.log("GPT results:", gptResults.response.text());
+        
       } catch (error) {
         // Handle error
         seterror(true)
-      toast.warning("Gpt API limit Exceeded Please try after some time");
+        toast.warning("Gpt API limit Exceeded Please try after some time");
       }
 
-    if (!gptResults?.choices) {
+    if (!gptResults.response.text()) {
       //Error handling
       return null;
     }
 
-    const gptMovies = gptResults.choices?.messages?.content.split(",");
+    const gptMovies = gptResults.response.text().split(",");
+    // console.log("array",gptMovies)
 
     const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
     // [Promise, Promise, Promise, Promise, Promise]
 
     const tmdbResults = await Promise.all(promiseArray);
 
-    console.log(tmdbResults);
+    // console.log(tmdbResults);
 
     dispatch(
       addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
     );
+    // searchText.current.value = '';
   }
   return (
     <div className="pt-[35%] md:pt-[10%] flex justify-center">
